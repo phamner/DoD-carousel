@@ -18,18 +18,48 @@ margin: auto;
 text-align: center;
 `
 
-const CarouselWrapper = styled.div`
+const CarouselWindowWrapper = styled.div`
 // border-radius: 3px;
 // padding: 0.5rem 0;
 // margin: 0.5rem 1rem;
 // width: 16rem;
 background: transparent;
 color: black;
-border: 2px dashed purple;
+// border: 2px dashed purple;
 margin: auto;
 text-align: center;
 display: flex;
 justify-content: center;
+
+overflow: hidden;
+width: 90%;
+`
+
+const CarouselWrapper = styled.div`
+// background: transparent;
+color: black;
+// border: 2px dashed purple;
+margin: auto;
+text-align: center;
+display: flex;
+justify-content: center;
+width: 75%
+transform: translateX(300px); 
+
+// /* Adapt the colors based on primary prop */
+// background: ${props => props.primary ? "palevioletred" : "white"};
+// color: ${props => props.primary ? "white" : "palevioletred"};
+
+
+`
+
+const RotatedBox = styled.div`
+  // transform: rotate(190deg);
+  text-shadow-offset: 10px 5px;
+  font-variant: small-caps;
+  margin: 5px 7px 2px;
+  transform: translateX(100px); 
+
 `
 
 
@@ -47,7 +77,7 @@ class App extends React.Component {
           starsArray: ['*', '*', '*', '*']
         },
         {
-          icon: 'ABC News',
+          icon: 'ABC NEWS',
           mainText: '"Because this has been such a bad flu season, we have seen a 100 percent increase in volume," Dr. Ian Tong, the chief medical officer at Doctor On Demand, told...',
           link: 'https://abcnews.go.com/Health/people-turning-virtual-health-care-options-amidst-deadly/story?id=52564574',
           stars: null,
@@ -63,23 +93,44 @@ class App extends React.Component {
 
         }
 
-      ]
+      ],
+      carouselPosition: 0
     };
     this.readmeLink = this.readmeLink.bind(this);
+
+    this.shiftCarouselRight = this.shiftCarouselRight.bind(this);
+    this.shiftCarouselLeft = this.shiftCarouselLeft.bind(this);
+
   }
 
   readmeLink(publication) {
-    console.log('click: ', publication)
+    console.log('redirect user to: ', publication)
+  }
+
+  shiftCarouselRight() {
+    console.log('click, moving carousel div to the right')
+  }
+
+  shiftCarouselLeft() {
+    console.log('click, moving carousel div to the left')
   }
 
   render() {
     return (
       <AppWrapper>
         <h1>Doctor on Demand Carousel</h1>
-        <CarouselWrapper>
-          {this.state.caroselItems.map(caroselItem => <CarouselHolder key={this.state.caroselItems.mainText} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
+        <CarouselWindowWrapper>
+          <CarouselWrapper>
+            {this.state.caroselItems.map(caroselItem => <CarouselHolder key={this.state.caroselItems.mainText} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
+          </CarouselWrapper>
+        </CarouselWindowWrapper>
+        <button type="button" onClick={this.shiftCarouselLeft}>Click Me (left)!</button>
+        <button type="button" onClick={this.shiftCarouselRight}>Click Me (right)!</button>
 
-        </CarouselWrapper>
+        <RotatedBox>hello world</RotatedBox>
+
+
+
       </AppWrapper>
     );
   }

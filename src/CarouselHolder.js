@@ -4,7 +4,11 @@ const CarouselItemWrapper = styled.div`
 width: 15rem;
 background: transparent;
 color: black;
-border: 2px dashed red;
+border: 2px solid black;
+margin: 1rem;
+padding: 0.5rem;
+border-radius: 25px;
+
 `
 
 const StarWrapper = styled.div`
@@ -23,6 +27,23 @@ color: black;
 height: 12rem;
 // border: 2px dashed blue;
 `
+
+const ReadArticlePWrapper = styled.p`
+color: black;
+// border: 2px dashed blue;
+cursor: pointer;
+width: 7rem;
+height: 1rem;
+`
+const ReadArticleDivWrapper = styled.div`
+color: black;
+// border: 2px dashed blue;
+width: 15rem;
+height: 2rem;
+display: flex;
+justify-content: center;
+`
+
 
 function CarouselHolder(props) {
     console.log(props.caroselItem.mainText)
@@ -63,7 +84,10 @@ function CarouselHolder(props) {
             <MainTextWrapper>
                 <p>{props.caroselItem.mainText}</p>
             </MainTextWrapper>
-            <p onClick={() => props.readmeLink(publication)}>Read article</p>
+            <ReadArticleDivWrapper>
+                <ReadArticlePWrapper onClick={() => props.readmeLink(publication)}>Read article</ReadArticlePWrapper>
+
+            </ReadArticleDivWrapper>
         </CarouselItemWrapper>
     )
 }
