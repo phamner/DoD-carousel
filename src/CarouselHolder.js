@@ -16,10 +16,18 @@ display: flex;
 justify-content: center;
 `
 
+const MainTextWrapper = styled.div`
+width: 15rem;
+background: transparent;
+color: black;
+height: 12rem;
+// border: 2px dashed blue;
+`
+
 function CarouselHolder(props) {
+    console.log(props.caroselItem.mainText)
     //PREVIOUS IMPLEMENTATION BELOW:
     // let stars = '';
-    // let fakeData = ['*', '*', '*', '*']
 
     // if (props.stars !== null) {
     //     let allStars = ''
@@ -30,6 +38,7 @@ function CarouselHolder(props) {
 
     //NEW IMPLEMENTATION
     let starCounterId = 0;
+
     let children = props.caroselItem.starsArray.map((val) => {
         starCounterId++;
         return (
@@ -37,7 +46,11 @@ function CarouselHolder(props) {
         )
     });
 
-    let currentStore = props.caroselItem.icon;
+    if (props.caroselItem.starsArray.length < 1 || props.caroselItem.starsArray === null) {
+        children = <div id={starCounterId}>&nbsp;</div>
+    }
+
+    let publication = props.caroselItem.icon;
 
     return (
 
@@ -47,8 +60,10 @@ function CarouselHolder(props) {
             </StarWrapper>
             {/* {stars} */}
             <div>icon</div>
-            <p>main text</p>
-            <p onClick={() => props.readmeLink(currentStore)}>Read article</p>
+            <MainTextWrapper>
+                <p>{props.caroselItem.mainText}</p>
+            </MainTextWrapper>
+            <p onClick={() => props.readmeLink(publication)}>Read article</p>
         </CarouselItemWrapper>
     )
 }
