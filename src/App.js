@@ -32,7 +32,7 @@ display: flex;
 justify-content: center;
 
 overflow: hidden;
-width: 90%;
+width: 75%;
 `
 
 const CarouselWrapper = styled.div`
@@ -44,23 +44,20 @@ text-align: center;
 display: flex;
 justify-content: center;
 width: 75%
-transform: translateX(300px); 
 
-// /* Adapt the colors based on primary prop */
-// background: ${props => props.primary ? "palevioletred" : "white"};
-// color: ${props => props.primary ? "white" : "palevioletred"};
-
-
+transition: transform 500ms ease;
+transform: translate(${props => props.carouselPosition ? '0' : '200px'
+  });
 `
 
-const RotatedBox = styled.div`
-  // transform: rotate(190deg);
-  text-shadow-offset: 10px 5px;
-  font-variant: small-caps;
-  margin: 5px 7px 2px;
-  transform: translateX(100px); 
+// const RotatedBox = styled.div`
+//   // transform: rotate(190deg);
+//   text-shadow-offset: 10px 5px;
+//   font-variant: small-caps;
+//   margin: 5px 7px 2px;
+//   transform: translateX(100px); 
 
-`
+// `
 
 
 
@@ -90,11 +87,33 @@ class App extends React.Component {
           link: 'https://www.wsj.com/articles/top-25-tech-companies-to-watch-1497492480',
           stars: 2,
           starsArray: ['*', '*']
+        },
+        {
+          icon: 'Mobi Health News',
+          mainText: '“The launch of Synapse marks a major milestone for Doctor On Demand and the larger telemedicine industry...',
+          link: 'fakeUrl',
+          stars: 3,
+          starsArray: ['*', '*', '*']
+        },
+        {
+          icon: 'INC.',
+          mainText: '“Yosselyn Dupuis, Director of HR, PHR for telemedicine company Doctor On Demand, says there are three big hurdles that people have to overcome to get a plan that...',
+          link: 'fakeUrl',
+          stars: 5,
+          starsArray: ['*', '*', '*', '*', '*']
+
+        },
+        {
+          icon: 'HUFF POST',
+          mainText: '“If you want to feel better faster, see a doctor as soon as you can,” he said. “If you fall outside the window, Tamiflu [a flu treatment medicine] will not be effective, but your doctor can still recommend symptom…',
+          link: 'fakeUrl',
+          stars: 4,
+          starsArray: ['*', '*', '*', '*']
 
         }
 
       ],
-      carouselPosition: 0
+      carouselPosition: false
     };
     this.readmeLink = this.readmeLink.bind(this);
 
@@ -120,15 +139,12 @@ class App extends React.Component {
       <AppWrapper>
         <h1>Doctor on Demand Carousel</h1>
         <CarouselWindowWrapper>
-          <CarouselWrapper>
+          <CarouselWrapper carouselPosition={this.state.carouselPosition}>
             {this.state.caroselItems.map(caroselItem => <CarouselHolder key={this.state.caroselItems.mainText} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
           </CarouselWrapper>
         </CarouselWindowWrapper>
         <button type="button" onClick={this.shiftCarouselLeft}>Click Me (left)!</button>
         <button type="button" onClick={this.shiftCarouselRight}>Click Me (right)!</button>
-
-        <RotatedBox>hello world</RotatedBox>
-
 
 
       </AppWrapper>
