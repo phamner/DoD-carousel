@@ -11,9 +11,7 @@ import TIME from './images/TIME.png';
 //Image for stars
 import Star from './images/Star.png';
 
-
 const CarouselItemWrapper = styled.div`
-// width: 240px;
 width: 330px;
 height: 330px;
 background-color: #ffffff;
@@ -35,10 +33,8 @@ margin: 10px;
 
 const MainTextWrapper = styled.div`
 text-align: left;
-// width: 15rem;
 background: transparent;
 color: black;
-// height: 12rem;
 // border: 2px dashed blue;
 `
 
@@ -46,17 +42,12 @@ const ReadArticlePWrapper = styled.p`
 color: blue;
 // border: 2px dashed blue;
 cursor: pointer;
-// width: 7rem;
 height: 1rem;
 `
 const ReadArticleDivWrapper = styled.div`
 color: black;
 // border: 2px dashed blue;
-// margin: 100px
-// width: 15rem;
 height: 1rem;
-// display: flex;
-// justify-content: center;
 position: absolute;
 bottom: 50px;
 width: 330px;

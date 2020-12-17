@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const AppWrapper = styled.div`
 background-color: #F9F9F9;
-// background-color: red;
 color: black;
 // border: 2px dashed green;
 margin: auto;
@@ -20,8 +19,6 @@ text-align: center;
 display: flex;
 justify-content: center;
 overflow: hidden;
-// width: 876px;
-// width: 1110px;
 width: 1200px;
 `
 
@@ -46,7 +43,6 @@ const Button = styled.button`
   background: white;
   cursor: pointer;
 `;
-
 
 class App extends React.Component {
   constructor(props) {
@@ -105,7 +101,7 @@ class App extends React.Component {
         }
 
       ],
-      // carouselPosition: the starting position is 436px
+      // carouselPosition: the starting position is 590px
       carouselPosition: 590
     };
     this.readmeLink = this.readmeLink.bind(this);
@@ -120,30 +116,26 @@ class App extends React.Component {
 
   shiftViewLeftBackwards() {
     let currentPosition = this.state.carouselPosition;
-    // let newPosition = currentPosition + 292;
     let newPosition = currentPosition + 398;
-
 
     if (currentPosition < 590) {
       this.setState({
         carouselPosition: newPosition
       })
-      // console.log('RIGHT: add 292px to current position: ', this.state.carouselPosition)
+      // console.log('RIGHT: add 398px to current position: ', this.state.carouselPosition)
     }
     // console.log('RIGHT: no movement: ', this.state.carouselPosition)
   }
 
   shiftViewRightForward() {
     let currentPosition = this.state.carouselPosition;
-    // let newPosition = currentPosition - 292;
     let newPosition = currentPosition - 398;
-
 
     if (currentPosition > -604) {
       this.setState({
         carouselPosition: newPosition
       })
-      // console.log('LEFT: add 292px to current position: ', this.state.carouselPosition)
+      // console.log('LEFT: add 398px to current position: ', this.state.carouselPosition)
     }
     // console.log('LEFT: no movement: ', this.state.carouselPosition)
   }
