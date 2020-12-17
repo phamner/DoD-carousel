@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import './App.css';
 import React from 'react';
 import CarouselHolder from './CarouselHolder.js';
 import styled from 'styled-components';
@@ -45,6 +43,7 @@ const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid palevioletred;
   border-radius: 3px;
+  background: white;
 `;
 
 
@@ -99,7 +98,7 @@ class App extends React.Component {
         }
 
       ],
-      // carouselPosition: starting position is 436px
+      // carouselPosition: the starting position is 436px
       carouselPosition: 436
     };
     this.readmeLink = this.readmeLink.bind(this);
@@ -107,46 +106,52 @@ class App extends React.Component {
     this.shiftCarouselLeft = this.shiftCarouselLeft.bind(this);
   }
 
+  //No longer using this method, and it uses fake data.  Can remove.
   readmeLink(publication) {
-    // console.log('redirect user to: ', publication)
     'https://www.w3schools.com/jsref/event_onclick.asp'
   }
 
   shiftCarouselRight() {
     let currentPosition = this.state.carouselPosition;
     let newPosition = currentPosition + 292;
+
     if (currentPosition <= 144) {
       this.setState({
         carouselPosition: newPosition
       })
-      console.log('RIGHT: add 292px to current position: ', this.state.carouselPosition)
+      // console.log('RIGHT: add 292px to current position: ', this.state.carouselPosition)
     }
-    console.log('RIGHT: no movement: ', this.state.carouselPosition)
+    // console.log('RIGHT: no movement: ', this.state.carouselPosition)
   }
 
   shiftCarouselLeft() {
     let currentPosition = this.state.carouselPosition;
     let newPosition = currentPosition - 292;
+
     if (currentPosition >= -148) {
       this.setState({
         carouselPosition: newPosition
       })
-      console.log('LEFT: add 292px to current position: ', this.state.carouselPosition)
+      // console.log('LEFT: add 292px to current position: ', this.state.carouselPosition)
     }
-    console.log('LEFT: no movement: ', this.state.carouselPosition)
+    // console.log('LEFT: no movement: ', this.state.carouselPosition)
   }
 
   render() {
+
+    let moveForward = '>';
+    let moveBack = '<';
+
     return (
       <AppWrapper>
         <h1>Doctor on Demand Carousel</h1>
         <CarouselWindowWrapper>
           <CarouselWrapper carouselPosition={this.state.carouselPosition}>
-            {this.state.caroselItems.map(caroselItem => <CarouselHolder key={this.state.caroselItems.mainText} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
+            {this.state.caroselItems.map(caroselItem => <CarouselHolder key={caroselItem.icon} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
           </CarouselWrapper>
         </CarouselWindowWrapper>
-        <Button type="button" onClick={this.shiftCarouselRight}>-</Button>
-        <Button type="button" onClick={this.shiftCarouselLeft}>+</Button>
+        <Button type="button" onClick={this.shiftCarouselRight}>{moveBack}</Button>
+        <Button type="button" onClick={this.shiftCarouselLeft}>{moveForward}</Button>
       </AppWrapper>
     );
   }

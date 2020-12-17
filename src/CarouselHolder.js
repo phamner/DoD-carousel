@@ -1,11 +1,14 @@
 import styled from 'styled-components';
-// import TIME from './src/images/TIME.png';
+
+//All of the below are images for each news organization
 import ABCNews from './images/ABCNews.png';
 import HuffingtonPost from './images/HuffingtonPost.png';
 import Inc from './images/Inc.png';
 import MobiHealthNews from './images/MobiHealthNews.png';
 import TheWallStreetJournal from './images/TheWallStreetJournal.png';
 import TIME from './images/TIME.png';
+
+//Image for stars
 import Star from './images/Star.png';
 
 
@@ -27,7 +30,6 @@ color: black;
 display: flex;
 justify-content: center;
 margin: 10px;
-
 `
 
 const MainTextWrapper = styled.div`
@@ -65,11 +67,9 @@ function CarouselHolder(props) {
     //     }
     // }
 
-    //NEW IMPLEMENTATION
+    //NEW IMPLEMENTATION:
 
-    console.log('In CarouselHolder component: ', props.caroselItem.link)
-
-
+    // Determines which news organization icon to use
     let currentIcon;
     if (props.caroselItem.icon === 'ABCNews') {
         currentIcon = ABCNews
@@ -86,22 +86,22 @@ function CarouselHolder(props) {
     }
 
     let SingleStar = <img src={Star} alt="*" height="15" />
-
-
     let starCounterId = 0;
 
+    //Iterates through number of stars for each item and creates new img for each, using the SingleStar image
     let children = props.caroselItem.starsArray.map((val) => {
         starCounterId++;
         return (
-            // <div id={starCounterId}>*&nbsp;&nbsp;</div>
-            <div id={starCounterId}>{SingleStar}&nbsp;&nbsp;</div>
+            <div id={starCounterId} key={starCounterId}>{SingleStar}&nbsp;&nbsp;</div>
         )
     });
 
+    //Checks to see if there are no stars for this carousel item.
     if (props.caroselItem.starsArray.length < 1 || props.caroselItem.starsArray === null) {
         children = <div id={starCounterId}>&nbsp;</div>
     }
 
+    //For clarity.  Allows user to check out the relevant article 
     let linkToArticle = props.caroselItem.link;
 
     return (
