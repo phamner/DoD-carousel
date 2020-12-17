@@ -13,12 +13,14 @@ import Star from './images/Star.png';
 
 
 const CarouselItemWrapper = styled.div`
-width: 240px;
+// width: 240px;
+width: 330px;
+height: 330px;
 background-color: #ffffff;
 color: black;
 border: 2px solid #ffffff;
 margin: 16px;
-padding: 8px;
+padding: 16px;
 box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.13);
 `
 
@@ -33,11 +35,10 @@ margin: 10px;
 
 const MainTextWrapper = styled.div`
 text-align: left;
-
-width: 15rem;
+// width: 15rem;
 background: transparent;
 color: black;
-height: 12rem;
+// height: 12rem;
 // border: 2px dashed blue;
 `
 
@@ -45,17 +46,23 @@ const ReadArticlePWrapper = styled.p`
 color: blue;
 // border: 2px dashed blue;
 cursor: pointer;
-width: 7rem;
+// width: 7rem;
 height: 1rem;
 `
 const ReadArticleDivWrapper = styled.div`
 color: black;
 // border: 2px dashed blue;
 // margin: 100px
-width: 15rem;
-height: 2rem;
-display: flex;
-justify-content: center;
+// width: 15rem;
+height: 1rem;
+// display: flex;
+// justify-content: center;
+position: absolute;
+bottom: 50px;
+width: 330px;
+margin: 0 auto;
+
+
 `
 
 function CarouselHolder(props) {
@@ -114,7 +121,7 @@ function CarouselHolder(props) {
                 {children}
             </StarWrapper>
             {/* {stars} */}
-            <img src={currentIcon} alt="ICON" height="28" />
+            <img src={currentIcon} alt="ICON" height="40" />
             <h4>{headerText}</h4>
 
             <MainTextWrapper>

@@ -20,7 +20,9 @@ text-align: center;
 display: flex;
 justify-content: center;
 overflow: hidden;
-width: 876px;
+// width: 876px;
+// width: 1110px;
+width: 1200px;
 `
 
 const CarouselWrapper = styled.div`
@@ -105,11 +107,11 @@ class App extends React.Component {
 
       ],
       // carouselPosition: the starting position is 436px
-      carouselPosition: 436
+      carouselPosition: 590
     };
     this.readmeLink = this.readmeLink.bind(this);
-    this.shiftCarouselRight = this.shiftCarouselRight.bind(this);
-    this.shiftCarouselLeft = this.shiftCarouselLeft.bind(this);
+    this.shiftViewLeftBackwards = this.shiftViewLeftBackwards.bind(this);
+    this.shiftViewRightForward = this.shiftViewRightForward.bind(this);
   }
 
   //No longer using this method, and it uses fake data.  Can remove.
@@ -117,11 +119,13 @@ class App extends React.Component {
     'https://www.w3schools.com/jsref/event_onclick.asp'
   }
 
-  shiftCarouselRight() {
+  shiftViewLeftBackwards() {
     let currentPosition = this.state.carouselPosition;
-    let newPosition = currentPosition + 292;
+    // let newPosition = currentPosition + 292;
+    let newPosition = currentPosition + 398;
 
-    if (currentPosition <= 144) {
+
+    if (currentPosition < 590) {
       this.setState({
         carouselPosition: newPosition
       })
@@ -130,11 +134,13 @@ class App extends React.Component {
     // console.log('RIGHT: no movement: ', this.state.carouselPosition)
   }
 
-  shiftCarouselLeft() {
+  shiftViewRightForward() {
     let currentPosition = this.state.carouselPosition;
-    let newPosition = currentPosition - 292;
+    // let newPosition = currentPosition - 292;
+    let newPosition = currentPosition - 398;
 
-    if (currentPosition >= -148) {
+
+    if (currentPosition > -604) {
       this.setState({
         carouselPosition: newPosition
       })
@@ -156,8 +162,8 @@ class App extends React.Component {
             {this.state.caroselItems.map(caroselItem => <CarouselHolder key={caroselItem.icon} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
           </CarouselWrapper>
         </CarouselWindowWrapper>
-        <Button type="button" onClick={this.shiftCarouselRight}>{moveBack}</Button>
-        <Button type="button" onClick={this.shiftCarouselLeft}>{moveForward}</Button>
+        <Button type="button" onClick={this.shiftViewLeftBackwards}>{moveBack}</Button>
+        <Button type="button" onClick={this.shiftViewRightForward}>{moveForward}</Button>
       </AppWrapper>
     );
   }
