@@ -61,12 +61,17 @@ position: absolute;
 bottom: 50px;
 width: 330px;
 margin: 0 auto;
+`
 
-
+const HeaderWrapper = styled.div`
+background: transparent;
+color: black;
+height: 40px;
+// border: 2px dashed blue;
 `
 
 function CarouselHolder(props) {
-    console.log(props.caroselItem.header)
+    // console.log(props.caroselItem.header)
     //PREVIOUS IMPLEMENTATION BELOW:
     // let stars = '';
 
@@ -122,7 +127,9 @@ function CarouselHolder(props) {
             </StarWrapper>
             {/* {stars} */}
             <img src={currentIcon} alt="ICON" height="40" />
-            <h4>{headerText}</h4>
+            <HeaderWrapper>
+                <h4>{headerText}</h4>
+            </HeaderWrapper>
 
             <MainTextWrapper>
                 <p>{props.caroselItem.mainText}</p>
