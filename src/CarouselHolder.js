@@ -32,6 +32,8 @@ margin: 10px;
 `
 
 const MainTextWrapper = styled.div`
+text-align: left;
+
 width: 15rem;
 background: transparent;
 color: black;
@@ -49,6 +51,7 @@ height: 1rem;
 const ReadArticleDivWrapper = styled.div`
 color: black;
 // border: 2px dashed blue;
+// margin: 100px
 width: 15rem;
 height: 2rem;
 display: flex;
