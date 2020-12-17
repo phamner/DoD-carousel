@@ -65,7 +65,8 @@ function CarouselHolder(props) {
 
     console.log('In CarouselHolder component: ', props.caroselItem.link)
 
-    let currentIcon = ABCNews
+
+    let currentIcon;
     if (props.caroselItem.icon === 'ABCNews') {
         currentIcon = ABCNews
     } else if (props.caroselItem.icon === 'HuffingtonPost') {
@@ -80,8 +81,6 @@ function CarouselHolder(props) {
         currentIcon = TIME
     }
 
-
-
     let starCounterId = 0;
 
     let children = props.caroselItem.starsArray.map((val) => {
@@ -95,12 +94,9 @@ function CarouselHolder(props) {
         children = <div id={starCounterId}>&nbsp;</div>
     }
 
-    // let publication = props.caroselItem.icon;
-
-
+    let linkToArticle = props.caroselItem.link;
 
     return (
-
         <CarouselItemWrapper>
             <StarWrapper>
                 {children}
@@ -112,8 +108,7 @@ function CarouselHolder(props) {
                 <p>{props.caroselItem.mainText}</p>
             </MainTextWrapper>
             <ReadArticleDivWrapper>
-                <ReadArticlePWrapper onClick={() => window.location.href = props.caroselItem.link}>Read article</ReadArticlePWrapper>
-
+                <ReadArticlePWrapper onClick={() => window.location.href = linkToArticle}>Read article</ReadArticlePWrapper>
             </ReadArticleDivWrapper>
         </CarouselItemWrapper>
     )

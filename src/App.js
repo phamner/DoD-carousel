@@ -7,7 +7,7 @@ import styled from 'styled-components';
 const AppWrapper = styled.div`
 background-color: #F9F9F9;
 color: black;
-border: 2px dashed green;
+// border: 2px dashed green;
 margin: auto;
 text-align: center;
 `
@@ -15,7 +15,7 @@ text-align: center;
 const CarouselWindowWrapper = styled.div`
 background: transparent;
 color: black;
-border: 2px dashed purple;
+// border: 2px dashed purple;
 margin: auto;
 text-align: center;
 display: flex;
@@ -37,6 +37,14 @@ transition: transform 500ms ease;
 transform: translate(${props => props.carouselPosition + 'px'});
 `
 
+const Button = styled.button`
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
 
 
 class App extends React.Component {
@@ -123,11 +131,8 @@ class App extends React.Component {
         carouselPosition: newPosition
       })
       console.log('LEFT: add 292px to current position: ', this.state.carouselPosition)
-
     }
     console.log('LEFT: no movement: ', this.state.carouselPosition)
-
-
   }
 
   render() {
@@ -139,9 +144,8 @@ class App extends React.Component {
             {this.state.caroselItems.map(caroselItem => <CarouselHolder key={this.state.caroselItems.mainText} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
           </CarouselWrapper>
         </CarouselWindowWrapper>
-        <button type="button" onClick={this.shiftCarouselRight}>-</button>
-        <button type="button" onClick={this.shiftCarouselLeft}>+</button>
-
+        <Button type="button" onClick={this.shiftCarouselRight}>-</Button>
+        <Button type="button" onClick={this.shiftCarouselLeft}>+</Button>
       </AppWrapper>
     );
   }
