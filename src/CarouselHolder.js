@@ -1,13 +1,20 @@
 import styled from 'styled-components';
+// import TIME from './src/images/TIME.png';
+import ABCNews from './images/ABCNews.png';
+import HuffingtonPost from './images/HuffingtonPost.png';
+import Inc from './images/Inc.png';
+import MobiHealthNews from './images/MobiHealthNews.png';
+import TheWallStreetJournal from './images/TheWallStreetJournal.png';
+import TIME from './images/TIME.png';
 
 const CarouselItemWrapper = styled.div`
 width: 240px;
-background: transparent;
+background-color: #ffffff;
 color: black;
-border: 2px solid black;
+border: 2px solid #ffffff;
 margin: 16px;
 padding: 8px;
-border-radius: 25px;
+box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.13);
 `
 
 const StarWrapper = styled.div`
@@ -28,7 +35,7 @@ height: 12rem;
 `
 
 const ReadArticlePWrapper = styled.p`
-color: black;
+color: blue;
 // border: 2px dashed blue;
 cursor: pointer;
 width: 7rem;
@@ -43,7 +50,6 @@ display: flex;
 justify-content: center;
 `
 
-
 function CarouselHolder(props) {
     //PREVIOUS IMPLEMENTATION BELOW:
     // let stars = '';
@@ -56,6 +62,26 @@ function CarouselHolder(props) {
     // }
 
     //NEW IMPLEMENTATION
+
+    console.log('In CarouselHolder component: ', props.caroselItem.link)
+
+    let currentIcon = ABCNews
+    if (props.caroselItem.icon === 'ABCNews') {
+        currentIcon = ABCNews
+    } else if (props.caroselItem.icon === 'HuffingtonPost') {
+        currentIcon = HuffingtonPost
+    } else if (props.caroselItem.icon === 'Inc') {
+        currentIcon = Inc
+    } else if (props.caroselItem.icon === 'MobiHealthNews') {
+        currentIcon = MobiHealthNews
+    } else if (props.caroselItem.icon === 'TheWallStreetJournal') {
+        currentIcon = TheWallStreetJournal
+    } else if (props.caroselItem.icon === 'TIME') {
+        currentIcon = TIME
+    }
+
+
+
     let starCounterId = 0;
 
     let children = props.caroselItem.starsArray.map((val) => {
@@ -69,7 +95,9 @@ function CarouselHolder(props) {
         children = <div id={starCounterId}>&nbsp;</div>
     }
 
-    let publication = props.caroselItem.icon;
+    // let publication = props.caroselItem.icon;
+
+
 
     return (
 
@@ -78,12 +106,13 @@ function CarouselHolder(props) {
                 {children}
             </StarWrapper>
             {/* {stars} */}
-            <div>icon</div>
+            <img src={currentIcon} alt="ICON" height="28" />
+
             <MainTextWrapper>
                 <p>{props.caroselItem.mainText}</p>
             </MainTextWrapper>
             <ReadArticleDivWrapper>
-                <ReadArticlePWrapper onClick={() => props.readmeLink(publication)}>Read article</ReadArticlePWrapper>
+                <ReadArticlePWrapper onClick={() => window.location.href = props.caroselItem.link}>Read article</ReadArticlePWrapper>
 
             </ReadArticleDivWrapper>
         </CarouselItemWrapper>
