@@ -32,7 +32,6 @@ margin: auto;
 text-align: center;
 display: flex;
 justify-content: center;
-width: 100%
 transition: transform 500ms ease;
 transform: translate(${props => props.carouselPosition + 'px'});
 `
