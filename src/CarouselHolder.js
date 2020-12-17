@@ -23,7 +23,6 @@ box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.13);
 `
 
 const StarWrapper = styled.div`
-width: 15rem;
 background: transparent;
 color: black;
 // border: 2px dashed blue;
@@ -92,7 +91,7 @@ function CarouselHolder(props) {
     let children = props.caroselItem.starsArray.map((val) => {
         starCounterId++;
         return (
-            <div id={starCounterId} key={starCounterId}>{SingleStar}&nbsp;&nbsp;</div>
+            <div id={starCounterId} key={starCounterId}>&nbsp;{SingleStar}&nbsp;</div>
         )
     });
 
