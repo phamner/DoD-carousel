@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 const CarouselItemWrapper = styled.div`
-width: 15rem;
+width: 240px;
 background: transparent;
 color: black;
 border: 2px solid black;
-margin: 1rem;
-padding: 0.5rem;
+margin: 16px;
+padding: 8px;
 border-radius: 25px;
-
 `
 
 const StarWrapper = styled.div`
@@ -46,7 +45,6 @@ justify-content: center;
 
 
 function CarouselHolder(props) {
-    console.log(props.caroselItem.mainText)
     //PREVIOUS IMPLEMENTATION BELOW:
     // let stars = '';
 

@@ -25,14 +25,15 @@ const CarouselWindowWrapper = styled.div`
 // width: 16rem;
 background: transparent;
 color: black;
-// border: 2px dashed purple;
+border: 2px dashed purple;
 margin: auto;
 text-align: center;
 display: flex;
 justify-content: center;
 
-overflow: hidden;
-width: 75%;
+// overflow: hidden;
+width: 876px;
+// width: 75%
 `
 
 const CarouselWrapper = styled.div`
@@ -43,11 +44,10 @@ margin: auto;
 text-align: center;
 display: flex;
 justify-content: center;
-width: 75%
+width: 100%
 
 transition: transform 500ms ease;
-transform: translate(${props => props.carouselPosition ? '0' : '200px'
-  });
+transform: translate(${props => props.carouselPosition + 'px'});
 `
 
 // const RotatedBox = styled.div`
@@ -113,7 +113,8 @@ class App extends React.Component {
         }
 
       ],
-      carouselPosition: false
+      // carouselPosition: '144px', starting position is 436
+      carouselPosition: 436
     };
     this.readmeLink = this.readmeLink.bind(this);
 
@@ -127,11 +128,23 @@ class App extends React.Component {
   }
 
   shiftCarouselRight() {
-    console.log('click, moving carousel div to the right')
+    let currentPosition = this.state.carouselPosition;
+    let newPosition = currentPosition + 292;
+    this.setState({
+      carouselPosition: newPosition
+    })
+    console.log('RIGHT: add 292px to current position: ', this.state.carouselPosition)
   }
 
   shiftCarouselLeft() {
-    console.log('click, moving carousel div to the left')
+    let currentPosition = this.state.carouselPosition;
+    let newPosition = currentPosition - 292;
+    this.setState({
+      carouselPosition: newPosition
+    })
+
+
+    console.log('LEFT: subtract 292px from current position: ', this.state.carouselPosition)
   }
 
   render() {
@@ -143,8 +156,9 @@ class App extends React.Component {
             {this.state.caroselItems.map(caroselItem => <CarouselHolder key={this.state.caroselItems.mainText} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
           </CarouselWrapper>
         </CarouselWindowWrapper>
-        <button type="button" onClick={this.shiftCarouselLeft}>Click Me (left)!</button>
-        <button type="button" onClick={this.shiftCarouselRight}>Click Me (right)!</button>
+        <button type="button" onClick={this.shiftCarouselRight}>-</button>
+
+        <button type="button" onClick={this.shiftCarouselLeft}>+</button>
 
 
       </AppWrapper>
