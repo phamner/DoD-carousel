@@ -6,6 +6,8 @@ import Inc from './images/Inc.png';
 import MobiHealthNews from './images/MobiHealthNews.png';
 import TheWallStreetJournal from './images/TheWallStreetJournal.png';
 import TIME from './images/TIME.png';
+import Star from './images/Star.png';
+
 
 const CarouselItemWrapper = styled.div`
 width: 240px;
@@ -24,6 +26,8 @@ color: black;
 // border: 2px dashed blue;
 display: flex;
 justify-content: center;
+margin: 10px;
+
 `
 
 const MainTextWrapper = styled.div`
@@ -81,12 +85,16 @@ function CarouselHolder(props) {
         currentIcon = TIME
     }
 
+    let SingleStar = <img src={Star} alt="*" height="15" />
+
+
     let starCounterId = 0;
 
     let children = props.caroselItem.starsArray.map((val) => {
         starCounterId++;
         return (
-            <div id={starCounterId}>*&nbsp;&nbsp;</div>
+            // <div id={starCounterId}>*&nbsp;&nbsp;</div>
+            <div id={starCounterId}>{SingleStar}&nbsp;&nbsp;</div>
         )
     });
 

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 const AppWrapper = styled.div`
 background-color: #F9F9F9;
+// background-color: red;
 color: black;
 // border: 2px dashed green;
 margin: auto;
