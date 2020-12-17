@@ -59,6 +59,7 @@ justify-content: center;
 `
 
 function CarouselHolder(props) {
+    console.log(props.caroselItem.header)
     //PREVIOUS IMPLEMENTATION BELOW:
     // let stars = '';
 
@@ -105,6 +106,7 @@ function CarouselHolder(props) {
 
     //For clarity.  Allows user to check out the relevant article 
     let linkToArticle = props.caroselItem.link;
+    let headerText = props.caroselItem.header;
 
     return (
         <CarouselItemWrapper>
@@ -113,6 +115,7 @@ function CarouselHolder(props) {
             </StarWrapper>
             {/* {stars} */}
             <img src={currentIcon} alt="ICON" height="28" />
+            <h4>{headerText}</h4>
 
             <MainTextWrapper>
                 <p>{props.caroselItem.mainText}</p>
