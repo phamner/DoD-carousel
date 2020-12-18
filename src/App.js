@@ -88,7 +88,7 @@ const SideButton = styled.button`
   background: white;
   cursor: pointer;
   // border-radius: 50%;
-  height: 400px;
+  height: 370px;
   width: 75;
   outline: none;
   box-shadow: none;
@@ -186,7 +186,7 @@ class App extends React.Component {
     //1194
     //398
 
-    if (currentPosition > -604) {
+    if (currentPosition > -594) {
       this.setState({
         carouselPosition: newPosition
       })
