@@ -22,6 +22,18 @@ overflow: hidden;
 width: 1200px;
 `
 
+const CarouselWindowAndButtonsWrapper = styled.div`
+background: transparent;
+color: black;
+// border: 2px dashed red;
+margin: auto;
+text-align: center;
+display: flex;
+justify-content: center;
+overflow: hidden;
+// width: 1200px;
+`
+
 const CarouselWrapper = styled.div`
 color: black;
 // border: 2px dashed purple;
@@ -33,15 +45,53 @@ transition: transform 500ms ease;
 transform: translate(${props => props.carouselPosition + 'px'});
 `
 
-const Button = styled.button`
-  color: palevioletred;
+const LeftButton = styled.button`
+  color: black;
   font-size: 1em;
   margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
+  border: 2px solid black;
   border-radius: 3px;
   background: white;
   cursor: pointer;
+  border-radius: 50%;
+  height: 20px;
+  width: 20git statpx;
+  outline: none;
+  box-shadow: none;
+  background-color: ${props => (props.carouselPosition < 0) ? "white" : "palevioletred"};
+`;
+
+const RightButton = styled.button`
+  color: black;
+  font-size: 1em;
+  margin: 1em;
+  border: 2px solid black;
+  border-radius: 3px;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  outline: none;
+  box-shadow: none;
+  background-color: ${props => (props.carouselPosition > 0) ? "white" : "palevioletred"};
+`;
+
+const SideButton = styled.button`
+  border: 2px dashed green;
+  color: black;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid black;
+  border-radius: 3px;
+  background: white;
+  cursor: pointer;
+  // border-radius: 50%;
+  height: 400px;
+  width: 75;
+  outline: none;
+  box-shadow: none;
 `;
 
 class App extends React.Component {
@@ -116,7 +166,10 @@ class App extends React.Component {
 
   shiftViewLeftBackwards() {
     let currentPosition = this.state.carouselPosition;
-    let newPosition = currentPosition + 398;
+    let newPosition = currentPosition + 1194;
+    //1194
+    //398
+
 
     if (currentPosition < 590) {
       this.setState({
@@ -129,7 +182,9 @@ class App extends React.Component {
 
   shiftViewRightForward() {
     let currentPosition = this.state.carouselPosition;
-    let newPosition = currentPosition - 398;
+    let newPosition = currentPosition - 1194;
+    //1194
+    //398
 
     if (currentPosition > -604) {
       this.setState({
@@ -148,13 +203,19 @@ class App extends React.Component {
     return (
       <AppWrapper>
         <h1>Doctor on Demand Carousel</h1>
-        <CarouselWindowWrapper>
-          <CarouselWrapper carouselPosition={this.state.carouselPosition}>
-            {this.state.caroselItems.map(caroselItem => <CarouselHolder key={caroselItem.icon} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
-          </CarouselWrapper>
-        </CarouselWindowWrapper>
-        <Button type="button" onClick={this.shiftViewLeftBackwards}>{moveBack}</Button>
-        <Button type="button" onClick={this.shiftViewRightForward}>{moveForward}</Button>
+        <CarouselWindowAndButtonsWrapper>
+          <SideButton type="button" onClick={this.shiftViewLeftBackwards} >{moveBack}</SideButton>
+
+          <CarouselWindowWrapper>
+            <CarouselWrapper carouselPosition={this.state.carouselPosition}>
+              {this.state.caroselItems.map(caroselItem => <CarouselHolder key={caroselItem.icon} caroselItem={caroselItem} readmeLink={this.readmeLink} />)}
+            </CarouselWrapper>
+          </CarouselWindowWrapper>
+
+          <SideButton type="button" onClick={this.shiftViewRightForward}>{moveForward}</SideButton>
+        </CarouselWindowAndButtonsWrapper>
+        <LeftButton type="button" onClick={this.shiftViewLeftBackwards} carouselPosition={this.state.carouselPosition}></LeftButton>
+        <RightButton type="button" onClick={this.shiftViewRightForward} carouselPosition={this.state.carouselPosition}></RightButton>
       </AppWrapper>
     );
   }
