@@ -49,7 +49,7 @@ const LeftButton = styled.button`
   color: black;
   font-size: 1em;
   margin: 1em;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 3px;
   background: white;
   cursor: pointer;
@@ -65,7 +65,7 @@ const RightButton = styled.button`
   color: black;
   font-size: 1em;
   margin: 1em;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 3px;
   background: white;
   cursor: pointer;
@@ -78,12 +78,12 @@ const RightButton = styled.button`
 `;
 
 const SideButton = styled.button`
-  border: 2px dashed green;
+  // border: 2px dashed green;
   color: black;
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 3px;
   background: white;
   cursor: pointer;
@@ -151,8 +151,8 @@ class App extends React.Component {
         }
 
       ],
-      // carouselPosition: the starting position is 590px
-      carouselPosition: 590
+      // carouselPosition: the starting position is 590px (previously.  Now using 600px)
+      carouselPosition: 600
     };
     this.readmeLink = this.readmeLink.bind(this);
     this.shiftViewLeftBackwards = this.shiftViewLeftBackwards.bind(this);
@@ -202,7 +202,7 @@ class App extends React.Component {
 
     return (
       <AppWrapper>
-        <h1>Doctor on Demand Carousel</h1>
+        {/* <h1>Doctor on Demand Carousel</h1> */}
         <CarouselWindowAndButtonsWrapper>
           <SideButton type="button" onClick={this.shiftViewLeftBackwards} >{moveBack}</SideButton>
 
