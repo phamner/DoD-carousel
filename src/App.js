@@ -55,7 +55,7 @@ const LeftButton = styled.button`
   cursor: pointer;
   border-radius: 50%;
   height: 20px;
-  width: 20git statpx;
+  width: 20px;
   outline: none;
   box-shadow: none;
   background-color: ${props => (props.carouselPosition < 0) ? "white" : "palevioletred"};
